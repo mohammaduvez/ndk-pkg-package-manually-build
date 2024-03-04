@@ -88,9 +88,11 @@ jobs:
       - run: ndk-pkg env
       - run: ndk-pkg setup
       - run: ndk-pkg sysinfo
+      - run: ndk-pkg formula-repo-add extra_repo https://github.com/mohammaduvez/ndk-pkg-formula-repository-official-core
       - run: ndk-pkg update
       - run: ndk-pkg install android-${{ github.event.inputs.target-api }}-${{ github.event.inputs.target-abis }}/${{ github.event.inputs.package-name }} --build-type=${{ github.event.inputs.build-type }} --link-type=${{ github.event.inputs.link-type }} ${{ github.event.inputs.log-level }}
-
+  
+      
       - name: pack
         run: |
           set -ex
